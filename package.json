@@ -1,7 +1,7 @@
 {
-  "name": "webpack-template",
+  "name": "odin-weather-app",
   "version": "1.0.0",
-  "description": "A simple webpack template made by the one and only.",
+  "description": "My solution to the Odin Project's Weather App project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/besplago/webpack-template.git"
+    "url": "git+https://github.com/besplago/odin-weather-app.git"
   },
   "keywords": [],
   "author": "Bruce Esplago <bruce_esplago@hotmail.com> (https://besplago.github.io/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/besplago/webpack-template/issues"
+    "url": "https://github.com/besplago/odin-weather-app/issues"
   },
-  "homepage": "https://github.com/besplago/webpack-template#readme",
+  "homepage": "https://github.com/besplago/odin-weather-app#readme",
   "dependencies": {
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",

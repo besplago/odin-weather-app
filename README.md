@@ -1,3 +1,3 @@
-# Webpack Template
+# Odin Weather App
 
-A simple webpack template made by the one and only.
+My solution to the Odin Project's Weather App project.
