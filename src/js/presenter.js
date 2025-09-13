@@ -8,6 +8,7 @@ export class Presenter {
 
   // TODO: Currently is just local time, should be location dependent.
   // Either use a lib or use the time from the weather api and count from there
+  // Also, this should be its own model, and not in the presenter
   updateTime = () => {
     const now = new Date();
     const timeString = now.toLocaleTimeString();
