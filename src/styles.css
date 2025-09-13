@@ -70,6 +70,27 @@ h6 {
 :root {
   --video-size: 34rem;
   --video-aspect-ratio: 16/9;
+
+  --sunny-background-gradient: radial-gradient(
+    circle at bottom,
+    rgba(255, 250, 216, 1) 25%,
+    rgba(114, 189, 202, 1) 100%
+  );
+  --rain-background-gradient: radial-gradient(
+    circle at top,
+    #8e8e8e 0%,
+    #9fccd4 100%
+  );
+  --cloudy-background-gradient: radial-gradient(
+    circle at top,
+    #ffffff 0%,
+    #afc0c3 100%
+  );
+  --night-background-gradient: radial-gradient(
+    circle at top,
+    #373737 0%,
+    #000000 100%
+  );
 }
 
 body {
@@ -78,6 +99,8 @@ body {
   justify-content: center;
   width: 100%;
   height: 100vh;
+  background: #fffad8;
+  background: var(--night-background-gradient);
 }
 
 #video {
