@@ -1,5 +1,7 @@
 import "./styles.css";
 import "./template.html";
+import { Presenter } from "./js/presenter";
+import { View } from "./js/view";
 
 const key = "ELSDJPML3MP99HR775X4UTM2N";
 
@@ -16,5 +18,6 @@ async function fetchWeather() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // fetchWeather().then((response) => console.log(response));
+  const view = new View();
+  const presenter = new Presenter(view);
 });
