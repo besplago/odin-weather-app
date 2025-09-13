@@ -101,6 +101,7 @@ body {
   height: 100vh;
   background: #fffad8;
   background: var(--night-background-gradient);
+  color: #ffffff;
 }
 
 #video {
