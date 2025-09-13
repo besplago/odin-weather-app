@@ -108,3 +108,11 @@ body {
   width: var(--video-size);
   aspect-ratio: var(--video-aspect-ratio);
 }
+
+#weather {
+  display: flex;
+}
+
+#icon {
+  width: 4rem;
+}
