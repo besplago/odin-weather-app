@@ -71,6 +71,10 @@ h6 {
   --video-size: 34rem;
   --video-aspect-ratio: 16/9;
 
+  --font: Helvetica;
+  --font-color: #ffffff;
+  --font-color-cloudy: #7d7b7b;
+
   --sunny-background-gradient: radial-gradient(
     circle at bottom,
     rgba(255, 250, 216, 1) 25%,
@@ -99,9 +103,9 @@ body {
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background: #fffad8;
-  background: var(--night-background-gradient);
-  color: #ffffff;
+  background: var(--cloudy-background-gradient);
+  color: var(--font-color-cloudy);
+  font-family: var(--font);
 }
 
 #video {

@@ -6,6 +6,8 @@ export class Presenter {
     setInterval(this.updateTime, 1000);
   }
 
+  // TODO: Currently is just local time, should be location dependent.
+  // Either use a lib or use the time from the weather api and count from there
   updateTime = () => {
     const now = new Date();
     const timeString = now.toLocaleTimeString();
