@@ -67,6 +67,11 @@ h6 {
   isolation: isolate;
 }
 
+:root {
+  --video-size: 34rem;
+  --video-aspect-ratio: 16/9;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -76,6 +81,6 @@ body {
 }
 
 #video {
-  width: 34rem;
-  aspect-ratio: 16/9;
+  width: var(--video-size);
+  aspect-ratio: var(--video-aspect-ratio);
 }
