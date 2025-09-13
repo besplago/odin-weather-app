@@ -114,6 +114,10 @@ body {
   font-family: var(--font);
 }
 
+#player-stats {
+  text-align: end;
+}
+
 #video {
   width: var(--video-size);
   aspect-ratio: var(--video-aspect-ratio);
