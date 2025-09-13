@@ -1,8 +1,8 @@
 export class Presenter {
-  constructor(time, view) {
+  constructor(time, weather, view) {
     this.time = time;
+    this.weather = weather;
     this.view = view;
-    console.log(this.view);
 
     setInterval(this.updateTime, 1000);
   }

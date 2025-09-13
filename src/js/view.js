@@ -4,6 +4,5 @@ export class View {
   setTime(timeString) {
     const time = document.getElementById("time");
     time.innerHTML = timeString;
-    console.log(timeString);
   }
 }
