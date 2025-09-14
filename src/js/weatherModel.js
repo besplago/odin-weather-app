@@ -11,6 +11,7 @@ export class Weather {
 
   async fetchWeatherResponse() {
     // TODO: Bruh, implement this with weather API, not visual crossing
+    // Maybe find another one, as open weather api might not have a free plan
     const key = "ELSDJPML3MP99HR775X4UTM2N";
     const today = new Date();
     const dd = String(today.getDate()).padStart(2, "0");
