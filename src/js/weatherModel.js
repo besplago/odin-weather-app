@@ -10,15 +10,9 @@ export class Weather {
   }
 
   async fetchWeatherResponse() {
-    // TODO: Bruh, implement this with weather API, not visual crossing
-    // Maybe find another one, as open weather api might not have a free plan
-    const key = "ELSDJPML3MP99HR775X4UTM2N";
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const yyyy = today.getFullYear();
+    const key = "852f08d906934fd18d9191846251109";
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/copenhagen/${yyyy}-${mm}-${dd}/?key=${key}`
+      `https://api.weatherapi.com/v1/current.json?key=${key}&q=London&aqi=no`
     );
     return response.json();
   }
