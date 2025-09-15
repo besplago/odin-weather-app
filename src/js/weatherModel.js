@@ -3,17 +3,17 @@ export class Weather {
     this.temperature = null;
     this.city = null;
     this.country = null;
-    this.weatherDescription = null;
+    this.condition = null;
     this.windSpeed = null;
 
     this.loaded = false;
   }
 
-  setData(temperature, city, country, weatherDescription, windSpeed) {
+  setData({ temperature, city, country, condition, windSpeed }) {
     this.temperature = temperature;
     this.city = city;
     this.country = country;
-    this.weatherDescription = weatherDescription;
+    this.condition = condition;
     this.windSpeed = windSpeed;
     this.loaded = true;
   }
