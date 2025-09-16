@@ -1,27 +1,50 @@
+// import { readFile } from "fs/promises";
+
 export class Presenter {
-  constructor(time, weather, view) {
+  constructor(time, weather, player, view) {
     this.time = time;
     this.weather = weather;
+    this.player = player;
     this.view = view;
 
-    this.fetchWeatherData("Copenhagen")
-      .then((data) => this.weather.setData(data))
-      .then(() => {
-        this.loadView();
-      })
-      .catch(() => {
-        alert("Could not find that place.");
-      });
+    this.init();
+
     setInterval(this.updateTime, 1000);
   }
 
-  loadView() {
+  async init() {
+    try {
+      const weatherData = await this.fetchWeatherData("Tokyo");
+      this.weather.setData(weatherData);
+      this.loadWeatherToView();
+
+      const playerData = await this.fetchPlayerData(
+        this.roundTemperature(this.weather.temperature)
+      );
+      this.player.setData(playerData);
+      this.loadPlayerToVIew();
+    } catch (error) {
+      alert("Could not find that place.");
+      console.error(error);
+    }
+  }
+
+  loadWeatherToView() {
     this.view.setTemperature(this.roundTemperature(this.weather.temperature));
     this.view.setCity(this.weather.city);
     this.view.setCountry(this.weather.country);
     this.view.setCondition(this.weather.condition.text);
     this.view.setWindSpeed(this.weather.windSpeed);
     this.view.setIcon(this.weather.icon);
+  }
+
+  loadPlayerToVIew() {
+    this.view.setLastName(this.player.lastName);
+    this.view.setFirstName(this.player.firstName);
+    this.view.setPlayerCountry(this.player.country);
+    this.view.setHeight(this.player.height);
+    this.view.setPosition(this.player.position);
+    this.view.setTeam(this.player.team);
   }
 
   roundTemperature(temperatureString) {
@@ -31,6 +54,29 @@ export class Presenter {
   updateTime = () => {
     this.view.setTime(this.time.getTime());
   };
+
+  async fetchPlayerData(jerseyNumber) {
+    const playerProfiles = require("../assets/players_profiles.json");
+    let playersWithJerseyNumber = [];
+    playerProfiles.forEach((playerProfile) => {
+      if (playerProfile.jersey_number == jerseyNumber) {
+        playersWithJerseyNumber.push(playerProfile);
+      }
+    });
+    const selectedPlayer =
+      playersWithJerseyNumber[
+        Math.floor(Math.random() * playersWithJerseyNumber.length)
+      ];
+
+    return {
+      lastName: selectedPlayer.last_name,
+      firstName: selectedPlayer.first_name,
+      country: selectedPlayer.country,
+      height: selectedPlayer.height,
+      position: selectedPlayer.position,
+      team: selectedPlayer.team.name,
+    };
+  }
 
   async fetchWeatherData(location) {
     const key = "852f08d906934fd18d9191846251109";

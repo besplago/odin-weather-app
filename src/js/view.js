@@ -1,6 +1,7 @@
 export class View {
   constructor() {}
 
+  // --- Weather ---
   setTemperature(temperatureString) {
     const temperature = document.getElementById("temperature");
     temperature.innerHTML = temperatureString;
@@ -34,5 +35,36 @@ export class View {
   setIcon(iconUrl) {
     const icon = document.getElementById("icon");
     icon.src = iconUrl;
+  }
+
+  // --- Player ---
+  setLastName(lastNameString) {
+    const lastName = document.getElementById("lastName");
+    lastName.innerHTML = lastNameString;
+  }
+
+  setFirstName(firstNameString) {
+    const firstName = document.getElementById("firstName");
+    firstName.innerHTML = firstNameString;
+  }
+
+  setPlayerCountry(countryString) {
+    const country = document.getElementById("playerCountry");
+    country.innerHTML = countryString;
+  }
+
+  setHeight(heightString) {
+    const height = document.getElementById("height");
+    height.innerHTML = heightString;
+  }
+
+  setPosition(positionString) {
+    const position = document.getElementById("position");
+    position.innerHTML = positionString;
+  }
+
+  setTeam(teamString) {
+    const team = document.getElementById("team");
+    team.innerHTML = teamString;
   }
 }
