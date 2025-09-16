@@ -4,7 +4,15 @@ export class Presenter {
     this.weather = weather;
     this.view = view;
 
-    this.fetchWeatherData().then((data) => this.weather.setData(data));
+    this.fetchWeatherData("Copenhagen")
+      .then((data) => this.weather.setData(data))
+      .then(() => {
+        this.view.setTemperature(this.weather.temperature);
+        this.view.setCity(this.weather.city);
+        this.view.setCountry(this.weather.country);
+        this.view.setCondition(this.weather.condition.text);
+        this.view.setWindSpeed(this.weather.windSpeed);
+      });
     setInterval(this.updateTime, 1000);
   }
 
@@ -12,10 +20,10 @@ export class Presenter {
     this.view.setTime(this.time.getTime());
   };
 
-  async fetchWeatherData() {
+  async fetchWeatherData(location) {
     const key = "852f08d906934fd18d9191846251109";
     const response = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${key}&q=London&aqi=no`
+      `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=no`
     );
     const jsonData = await response.json();
     return {
