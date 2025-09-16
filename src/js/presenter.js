@@ -24,10 +24,10 @@ export class Presenter {
       this.player.setData(playerData);
       this.loadPlayerToVIew();
 
-      const youtubeVideoUrl = await this.searchYouTube(
-        "lebron james highlights"
-      );
-      this.loadVideoToView(youtubeVideoUrl);
+      const searchQuery = `${this.player.firstName} ${this.player.lastName} ${this.player.team} highlights`;
+
+      const youtubeVideoId = await this.searchYouTube(searchQuery);
+      this.loadVideoToView(youtubeVideoId);
     } catch (error) {
       alert("Could not find that place.");
       console.error(error);
