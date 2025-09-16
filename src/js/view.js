@@ -67,4 +67,9 @@ export class View {
     const team = document.getElementById("team");
     team.innerHTML = teamString;
   }
+
+  setVideo(videoId) {
+    const video = document.getElementById("video");
+    video.src = `https://www.youtube.com/embed/${videoId}`;
+  }
 }

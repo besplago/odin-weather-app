@@ -14,7 +14,7 @@ export class Presenter {
 
   async init() {
     try {
-      const weatherData = await this.fetchWeatherData("Tokyo");
+      const weatherData = await this.fetchWeatherData("Kastrup");
       this.weather.setData(weatherData);
       this.loadWeatherToView();
 
@@ -23,9 +23,30 @@ export class Presenter {
       );
       this.player.setData(playerData);
       this.loadPlayerToVIew();
+
+      const youtubeVideoUrl = await this.searchYouTube(
+        "lebron james highlights"
+      );
+      this.loadVideoToView(youtubeVideoUrl);
     } catch (error) {
       alert("Could not find that place.");
       console.error(error);
+    }
+  }
+
+  async searchYouTube(query) {
+    const apiKey = "AIzaSyCAqQAYaKefV3ncjbeu4RVYoUDqzMpC9Zc";
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${encodeURIComponent(
+      query
+    )}&key=${apiKey}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.items && data.items.length > 0) {
+      return data.items[0].id.videoId; // just return videoId
+    } else {
+      return null;
     }
   }
 
@@ -45,6 +66,10 @@ export class Presenter {
     this.view.setHeight(this.player.height);
     this.view.setPosition(this.player.position);
     this.view.setTeam(this.player.team);
+  }
+
+  loadVideoToView(videoUrl) {
+    this.view.setVideo(videoUrl);
   }
 
   roundTemperature(temperatureString) {
