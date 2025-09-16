@@ -15,6 +15,8 @@ export class Presenter {
         this.view.setCondition(this.weather.condition.text);
         this.view.setWindSpeed(this.weather.windSpeed);
         this.view.setIcon(this.weather.icon)
+      }).catch(() => {
+        alert("Could not find that place.")
       });
     setInterval(this.updateTime, 1000);
   }
