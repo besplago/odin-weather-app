@@ -38,6 +38,7 @@ export class Presenter {
       country: jsonData.location.country,
       condition: jsonData.current.condition,
       windSpeed: jsonData.current.wind_kph,
+      isDay: jsonData.current.is_day
     };
   }
 }
