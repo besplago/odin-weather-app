@@ -7,13 +7,19 @@ export class Presenter {
     this.fetchWeatherData("Copenhagen")
       .then((data) => this.weather.setData(data))
       .then(() => {
-        this.view.setTemperature(this.weather.temperature);
+        this.view.setTemperature(
+          this.roundTemperature(this.weather.temperature)
+        );
         this.view.setCity(this.weather.city);
         this.view.setCountry(this.weather.country);
         this.view.setCondition(this.weather.condition.text);
         this.view.setWindSpeed(this.weather.windSpeed);
       });
     setInterval(this.updateTime, 1000);
+  }
+
+  roundTemperature(temperatureString) {
+    return Number(Math.round(temperatureString)).toString();
   }
 
   updateTime = () => {
