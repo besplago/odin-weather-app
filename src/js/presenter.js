@@ -7,18 +7,21 @@ export class Presenter {
     this.fetchWeatherData("Copenhagen")
       .then((data) => this.weather.setData(data))
       .then(() => {
-        this.view.setTemperature(
-          this.roundTemperature(this.weather.temperature)
-        );
-        this.view.setCity(this.weather.city);
-        this.view.setCountry(this.weather.country);
-        this.view.setCondition(this.weather.condition.text);
-        this.view.setWindSpeed(this.weather.windSpeed);
-        this.view.setIcon(this.weather.icon)
-      }).catch(() => {
-        alert("Could not find that place.")
+        this.loadView();
+      })
+      .catch(() => {
+        alert("Could not find that place.");
       });
     setInterval(this.updateTime, 1000);
+  }
+
+  loadView() {
+    this.view.setTemperature(this.roundTemperature(this.weather.temperature));
+    this.view.setCity(this.weather.city);
+    this.view.setCountry(this.weather.country);
+    this.view.setCondition(this.weather.condition.text);
+    this.view.setWindSpeed(this.weather.windSpeed);
+    this.view.setIcon(this.weather.icon);
   }
 
   roundTemperature(temperatureString) {
