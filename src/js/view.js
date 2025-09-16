@@ -30,4 +30,9 @@ export class View {
     const wind = document.getElementById("wind");
     wind.innerHTML = `${windSpeedString} km/h`;
   }
+
+  setIcon(iconUrl) {
+    const icon = document.getElementById("icon");
+    icon.src = iconUrl;
+  }
 }

@@ -14,6 +14,7 @@ export class Presenter {
         this.view.setCountry(this.weather.country);
         this.view.setCondition(this.weather.condition.text);
         this.view.setWindSpeed(this.weather.windSpeed);
+        this.view.setIcon(this.weather.icon)
       });
     setInterval(this.updateTime, 1000);
   }
@@ -38,7 +39,8 @@ export class Presenter {
       country: jsonData.location.country,
       condition: jsonData.current.condition,
       windSpeed: jsonData.current.wind_kph,
-      isDay: jsonData.current.is_day
+      isDay: jsonData.current.is_day,
+      icon: jsonData.current.condition.icon,
     };
   }
 }
