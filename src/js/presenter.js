@@ -36,7 +36,8 @@ export class Presenter {
 
   async searchYouTube(query) {
     const apiKey = "AIzaSyCAqQAYaKefV3ncjbeu4RVYoUDqzMpC9Zc";
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${encodeURIComponent(
+    const maxResults = 5;
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=${maxResults}&q=${encodeURIComponent(
       query
     )}&key=${apiKey}`;
 
@@ -44,7 +45,8 @@ export class Presenter {
     const data = await response.json();
 
     if (data.items && data.items.length > 0) {
-      return data.items[0].id.videoId; // just return videoId
+      const randomIndex = Math.floor(Math.random() * data.items.length);
+      return data.items[randomIndex].id.videoId;
     } else {
       return null;
     }
