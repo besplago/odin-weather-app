@@ -14,7 +14,7 @@ export class Presenter {
 
   async init() {
     try {
-      const weatherData = await this.fetchWeatherData("Kastrup");
+      const weatherData = await this.fetchWeatherData("Denmark");
       this.weather.setData(weatherData);
       this.loadWeatherToView();
 
@@ -94,6 +94,9 @@ export class Presenter {
       playersWithJerseyNumber[
         Math.floor(Math.random() * playersWithJerseyNumber.length)
       ];
+
+    console.log(selectedPlayer);
+
 
     return {
       lastName: selectedPlayer.last_name,

@@ -70,6 +70,6 @@ export class View {
 
   setVideo(videoId) {
     const video = document.getElementById("video");
-    video.src = `https://www.youtube.com/embed/${videoId}`;
+    video.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   }
 }
