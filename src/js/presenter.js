@@ -14,7 +14,7 @@ export class Presenter {
 
   async init() {
     try {
-      const weatherData = await this.fetchWeatherData("Denmark");
+      const weatherData = await this.fetchWeatherData("Sun City");
       this.weather.setData(weatherData);
       this.loadWeatherToView();
 
@@ -59,6 +59,7 @@ export class Presenter {
     this.view.setCondition(this.weather.condition.text);
     this.view.setWindSpeed(this.weather.windSpeed);
     this.view.setIcon(this.weather.icon);
+    this.view.setTheme(this.weather.theme);
   }
 
   loadPlayerToVIew() {
@@ -97,7 +98,6 @@ export class Presenter {
 
     console.log(selectedPlayer);
 
-
     return {
       lastName: selectedPlayer.last_name,
       firstName: selectedPlayer.first_name,
@@ -114,6 +114,7 @@ export class Presenter {
       `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=no`
     );
     const jsonData = await response.json();
+
     return {
       temperature: jsonData.current.temp_c,
       city: jsonData.location.name,
@@ -122,6 +123,38 @@ export class Presenter {
       windSpeed: jsonData.current.wind_kph,
       isDay: jsonData.current.is_day,
       icon: jsonData.current.condition.icon,
+      theme: this.extractTheme(
+        jsonData.current.condition.code,
+        jsonData.current.is_day
+      ),
     };
+  }
+
+  extractTheme(conditionCode, isDay) {
+    if (isDay === 0) {
+      return "night";
+    }
+
+    const themeCodes = require("../assets/theme_codes.json");
+
+    for (const [theme, codes] of Object.entries(themeCodes)) {
+      if (codes.includes(conditionCode)) {
+        switch (theme) {
+          case "sunny":
+          case "cloudy":
+          case "rain":
+            return theme;
+          case "snowy":
+          case "sleet":
+          case "ice":
+            return "cloudy"; // fallback
+          case "thunder":
+            return "rain"; // fallback
+        }
+      }
+    }
+
+    // Absolute fallback
+    return "cloudy";
   }
 }

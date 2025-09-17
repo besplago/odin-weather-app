@@ -132,6 +132,26 @@ ul {
   margin: 0;
 }
 
+body.sunny {
+  background: var(--sunny-background-gradient);
+  color: var(--font-color);
+}
+
+body.rain {
+  background: var(--rain-background-gradient);
+  color: var(--font-color-cloudy);
+}
+
+body.cloudy {
+  background: var(--cloudy-background-gradient);
+  color: var(--font-color-cloudy);
+}
+
+body.night {
+  background: var(--night-background-gradient);
+  color: var(--font-color);
+}
+
 body {
   display: flex;
   align-items: center;

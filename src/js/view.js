@@ -37,6 +37,10 @@ export class View {
     icon.src = iconUrl;
   }
 
+  setTheme(theme) {
+    document.body.className = theme;
+  }
+
   // --- Player ---
   setLastName(lastNameString) {
     const lastName = document.getElementById("lastName");
