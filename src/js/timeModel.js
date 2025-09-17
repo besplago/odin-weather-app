@@ -1,10 +1,17 @@
 export class Time {
-  constructor() {}
+  constructor() {
+    this.currentTime = null;
+  }
 
-  // TODO: Currently is just local time, should be location dependent.
-  // Either use a lib or use the time from the weather api and count from there
+  tick() {
+    this.currentTime.setSeconds(this.currentTime.getSeconds() + 1);
+  }
+
   getTime() {
-    const now = new Date();
-    return now.toLocaleTimeString();
+    return this.currentTime.toLocaleTimeString();
+  }
+
+  setStartTime(startTimeString) {
+    this.currentTime = new Date(startTimeString);
   }
 }

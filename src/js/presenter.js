@@ -1,5 +1,3 @@
-// import { readFile } from "fs/promises";
-
 export class Presenter {
   constructor(time, weather, player, view) {
     this.time = time;
@@ -14,8 +12,11 @@ export class Presenter {
 
   async init() {
     try {
-      const weatherData = await this.fetchWeatherData("Sun City");
+      const weatherData = await this.fetchWeatherData("Alaska");
       this.weather.setData(weatherData);
+
+      this.time.setStartTime(weatherData.time);
+
       this.loadWeatherToView();
 
       const playerData = await this.fetchPlayerData(
@@ -80,6 +81,7 @@ export class Presenter {
   }
 
   updateTime = () => {
+    this.time.tick();
     this.view.setTime(this.time.getTime());
   };
 
@@ -127,6 +129,7 @@ export class Presenter {
         jsonData.current.condition.code,
         jsonData.current.is_day
       ),
+      time: jsonData.location.localtime,
     };
   }
 
