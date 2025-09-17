@@ -152,6 +152,8 @@ body.night {
   color: var(--font-color);
 }
 
+/* TODO: Get the width of the left-vertical, and apply it to left on body*/
+/* TODO: Get the height of time, city, etc. and apply it to bottom on body */
 body {
   display: flex;
   align-items: center;
