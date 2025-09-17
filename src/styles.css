@@ -83,7 +83,7 @@ h6 {
 
   --sunny-background-gradient: radial-gradient(
     circle at bottom,
-    rgba(255, 250, 216, 1) 25%,
+    rgb(233, 227, 191) 25%,
     rgba(114, 189, 202, 1) 100%
   );
   --rain-background-gradient: radial-gradient(
