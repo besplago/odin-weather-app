@@ -14,7 +14,7 @@ export class View {
 
   setCity(cityString) {
     const city = document.getElementById("city");
-    city.innerHTML = cityString;
+    city.value = cityString;
   }
 
   setCountry(countryString) {
