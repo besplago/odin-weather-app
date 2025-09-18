@@ -69,6 +69,7 @@ h6 {
 
 :root {
   --gap-medium: 2rem;
+  --gap-large: 6rem;
 
   --video-size: 34rem;
   --video-aspect-ratio: 16/9;
@@ -166,6 +167,11 @@ body {
   background: var(--cloudy-background-gradient);
   color: var(--font-color-cloudy);
   font-family: var(--font);
+}
+
+#left-vertical {
+  position: relative;
+  bottom: var(--gap-large);
 }
 
 #center-vertical {
