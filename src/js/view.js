@@ -41,6 +41,14 @@ export class View {
     document.body.className = theme;
   }
 
+  bindLocationChanged(handler) {
+    const cityInput = document.getElementById("city")
+    cityInput.addEventListener("change", event => {
+      const newLocation = event.target.value
+      handler(newLocation)
+    })
+  }
+
   // --- Player ---
   setLastName(lastNameString) {
     const lastName = document.getElementById("lastName");

@@ -5,14 +5,15 @@ export class Presenter {
     this.player = player;
     this.view = view;
 
-    this.init();
+    this.loadLocationData("Copenhagen");
+    this.connectView();
 
     setInterval(this.updateTime, 1000);
   }
 
-  async init() {
+  async loadLocationData(location) {
     try {
-      const weatherData = await this.fetchWeatherData("Alaska");
+      const weatherData = await this.fetchWeatherData(location);
       this.weather.setData(weatherData);
 
       this.time.setStartTime(weatherData.time);
@@ -33,6 +34,12 @@ export class Presenter {
       alert("Could not find that place.");
       console.error(error);
     }
+  }
+
+  connectView() {
+    this.view.bindLocationChanged((location) =>
+      this.loadLocationData(location)
+    );
   }
 
   async searchYouTube(query) {
