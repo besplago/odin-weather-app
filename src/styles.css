@@ -68,7 +68,7 @@ h6 {
 }
 
 :root {
-  --gap-medium: 2rem;
+  --gap-medium: 1.5rem;
   --gap-large: 6rem;
 
   --video-size: 34rem;
