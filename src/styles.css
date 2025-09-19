@@ -155,8 +155,6 @@ body.night {
   color: var(--font-color);
 }
 
-/* TODO: Get the width of the "left-vertical", and apply it to left on body*/
-/* TODO: Get the height of "top" and apply it to bottom on body */
 body {
   --right-width: 0px;
 
