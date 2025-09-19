@@ -30,6 +30,8 @@ export class Presenter {
 
       const youtubeVideoId = await this.searchYouTube(searchQuery);
       this.loadVideoToView(youtubeVideoId);
+
+      this.setBodyPaddings();
     } catch (error) {
       alert("Could not find that place.");
       console.error(error);
@@ -166,5 +168,12 @@ export class Presenter {
 
     // Absolute fallback
     return "cloudy";
+  }
+
+  setBodyPaddings() {
+    const leftVertical = document.getElementById("left-vertical");
+    const topCenterVertical = document.getElementById("top");
+
+    this.view.setBodyRight(leftVertical.offsetWidth);
   }
 }

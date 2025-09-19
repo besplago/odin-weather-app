@@ -155,9 +155,11 @@ body.night {
   color: var(--font-color);
 }
 
-/* TODO: Get the width of the left-vertical, and apply it to left on body*/
-/* TODO: Get the height of time, city, etc. and apply it to bottom on body */
+/* TODO: Get the width of the "left-vertical", and apply it to left on body*/
+/* TODO: Get the height of "top" and apply it to bottom on body */
 body {
+  --right-width: 0px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,6 +169,7 @@ body {
   background: var(--cloudy-background-gradient);
   color: var(--font-color-cloudy);
   font-family: var(--font);
+  right: var(--right-width);
 }
 
 #left-vertical {

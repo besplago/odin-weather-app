@@ -42,11 +42,11 @@ export class View {
   }
 
   bindLocationChanged(handler) {
-    const cityInput = document.getElementById("city")
-    cityInput.addEventListener("change", event => {
-      const newLocation = event.target.value
-      handler(newLocation)
-    })
+    const cityInput = document.getElementById("city");
+    cityInput.addEventListener("change", (event) => {
+      const newLocation = event.target.value;
+      handler(newLocation);
+    });
   }
 
   // --- Player ---
@@ -83,5 +83,10 @@ export class View {
   setVideo(videoId) {
     const video = document.getElementById("video");
     video.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  }
+
+  // --- Misc ---
+  setBodyRight(pixels) {
+    document.body.style.setProperty("--right-width", pixels + "px");
   }
 }
